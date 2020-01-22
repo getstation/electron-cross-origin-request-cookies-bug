@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="result">Loading..</div>
+  
+  <script>
+    const displayResult = (text) => {
+      document.getElementById('result').innerHTML = text;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const endpoint = urlParams.get('endpoint');
+
+    const FETCH_OPTIONS = {
+      // "credentials": "include",
+      // mode: "no-cors",
+    }
+    if(!endpoint) {
+      displayResult('No endpoint provided');
+      throw new Error('No endpoint provided')
+    }
+    const randomValue = Math.random().toString(36).substring(7);
+    fetch(`${endpoint}/set-cookie?value=${randomValue}`, FETCH_OPTIONS).then(() => {
+      fetch(`${endpoint}/get-cookie`, FETCH_OPTIONS).then(r => r.json()).then(res => {
+        if (res['value'] === randomValue) {
+          displayResult('ok')
+        } else {
+          displayResult('not ok')
+        }
+      })
+    })
+  </script>
+</body>
+</html>

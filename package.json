@@ -1,0 +1,19 @@
+{
+  "name": "electron-cross-origin-request-cookies-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "electron": "^7.1.7",
+    "express": "^4.17.1",
+    "ngrok": "^3.2.7",
+    "yargs": "^15.1.0"
+  }
+}
